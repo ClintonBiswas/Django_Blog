@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>{% block title_block %} Blogs {% endblock %}</title>
+    <link rel="icon" href="/media/logo1.png" type="image/gif">
+  </head>
+  <body style="background-color: #F2F2F2">
+    <div class="container-fluid"style="background-color: #2b447a">
+
+
+<div class="container">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #2b447a">
+          <a class="nav-link" href="{% url 'index' %}"><img src="/media/logo1.png" width="90px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'index'%}"style="color: White">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'App_Blog:about'%}"style="color: White">About Me</a>
+    </li>
+    {%if user.is_authenticated%}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'App_Login:logout'%}" style="color: White">Logout</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'App_Login:profile'%}" style="color: White">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'App_Blog:create_blog'%}"style="color: White">Write Blog</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'App_Blog:my_blog'%}"style="color: White">My Blogs</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'App_Login:signup'%}"style="color: White">Sign Up</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'App_Login:login'%}"style="color: White">Login</a>
+    </li>
+    {% endif %}
+  </ul>
+</div>
+</nav>
+</div>
+</div>
+<div class="container" style="padding:20px;background-color:White";>
+  {% block body_block %}
+
+  {% endblock %}
+</div>
+
+  </body>
+</html>
